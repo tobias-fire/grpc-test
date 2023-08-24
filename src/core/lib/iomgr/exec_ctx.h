@@ -23,6 +23,8 @@
 
 #include <limits>
 
+#include "Common/MemoryTrackerBase/BlockMemoryExceptionInThread.h"
+
 #include <grpc/impl/grpc_types.h>
 #include <grpc/support/atm.h>
 #include <grpc/support/cpu.h>
@@ -95,6 +97,9 @@ class Combiner;
 ///               callbacks.
 ///
 class ExecCtx {
+  BlockMemoryExceptionInThread grpc_oom_exception_blocker{
+      VariableContext::Global};
+
  public:
   /// Default Constructor
 

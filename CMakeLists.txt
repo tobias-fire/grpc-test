@@ -2402,6 +2402,7 @@ target_link_libraries(grpc
   ${_gRPC_SSL_LIBRARIES}
   address_sorting
   upb
+  clickhouse_memory_tracker_base
 )
 if(_gRPC_PLATFORM_IOS OR _gRPC_PLATFORM_MAC)
   target_link_libraries(grpc "-framework CoreFoundation")
