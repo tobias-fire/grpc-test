@@ -19,15 +19,15 @@
 #ifndef GRPC_CORE_LIB_IOMGR_EXEC_CTX_H
 #define GRPC_CORE_LIB_IOMGR_EXEC_CTX_H
 
-#include <grpc/support/port_platform.h>
-
-#include <limits>
-
 #include <grpc/impl/codegen/grpc_types.h>
 #include <grpc/support/atm.h>
 #include <grpc/support/cpu.h>
 #include <grpc/support/log.h>
+#include <grpc/support/port_platform.h>
 
+#include <limits>
+
+#include "Common/MemoryTrackerBase/BlockMemoryExceptionInThread.h"
 #include "src/core/lib/gpr/time_precise.h"
 #include "src/core/lib/gpr/tls.h"
 #include "src/core/lib/gprpp/debug_location.h"
@@ -104,6 +104,9 @@ class Combiner;
  *                callbacks.
  */
 class ExecCtx {
+  BlockMemoryExceptionInThread grpc_oom_exception_blocker{
+      VariableContext::Global};
+
  public:
   /** Default Constructor */
 

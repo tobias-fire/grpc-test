@@ -1902,6 +1902,7 @@ target_link_libraries(grpc
   absl::status
   absl::inlined_vector
   absl::flat_hash_set
+  clickhouse_memory_tracker_base
 )
 if(_gRPC_PLATFORM_IOS OR _gRPC_PLATFORM_MAC)
   target_link_libraries(grpc "-framework CoreFoundation")
